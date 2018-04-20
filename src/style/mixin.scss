@@ -1,0 +1,25 @@
+//定義Flex佈局 用@content也能實現
+@mixin fx($property){
+  display: flex;
+  @each $key in map_keys($property){
+    #{$key}: #{map_get($property, $key)}
+  }
+}
+//定義背景圖片
+@mixin bgimg($url, $repeat, $position, $size){
+  background: url(#{$url}) $repeat fixed $position;
+  -webkit-background-size: $size;
+  background-size: $size;
+  @content;
+}
+//定義背景顔色
+@mixin  bgcolor($color){
+  background-color: $color;
+}
+
+//定義媒體查詢
+@mixin media-less-md(){
+  @media screen and (max-width: 768px){
+    @content;
+  }
+}
